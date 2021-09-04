@@ -1,6 +1,6 @@
 # hyperapp-starter
 
-Hyperapp v2 starter with TypeScript, JSX and Parcel.
+Hyperapp starter with TypeScript, JSX and Parcel.
 
 ![](./preview.gif)
 

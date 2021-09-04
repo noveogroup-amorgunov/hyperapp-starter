@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "lib": ["es2017", "dom"],
+        "outDir": "./dist",
+        "module": "commonjs",
+        "sourceMap": true,
+        "strict": true,
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "noImplicitAny": true,
+        "jsx": "preserve",
+        "jsxFactory": "h",
+        "baseUrl": "./",
+        "paths": {
+            "~*": ["./*"]
+        }
+    },
+    "include": ["src/**/*"]
+}

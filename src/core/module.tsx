@@ -7,7 +7,6 @@ export type ModuleAction<S> = (statePath: string) => Action<S>;
 export type ModuleEffect<S> = (statePath: string) => Effect<S>;
 
 type CreateModuleArgs<State> = {
-    name: string;
     initialState: State;
     View: (...args: any[]) => VNode<State>;
 };
@@ -34,7 +33,6 @@ export function createAction<S, P>(action: Action<S>): ModuleAction<S> {
 }
 
 export function createModule<State, Props extends {id: string}>({
-    name,
     initialState,
     View,
 }: CreateModuleArgs<State>) {
@@ -43,10 +41,6 @@ export function createModule<State, Props extends {id: string}>({
             state[props.id] = initialState;
         }
 
-        return (
-            <div data-module={name}>
-                <View {...props} state={state[props.id]} />
-            </div>
-        );
+        return <View {...props} state={state[props.id]} />;
     };
 }

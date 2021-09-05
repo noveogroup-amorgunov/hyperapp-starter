@@ -5,20 +5,14 @@
 
 import {VNode} from 'hyperapp';
 
-type ExtendedVNode = VNode<any> & {name?: any};
-type FnWithState = (...args: any[]) => (state: State) => VNode<any>;
-type Fn = (...args: any[]) => ExtendedVNode;
-type State = any;
-type View = Fn | FnWithState;
+type FnWithState<S> = (...args: any[]) => (state: S) => VNode<any>;
+type Fn = (...args: any[]) => VNode<any>;
+type View<S> = Fn | FnWithState<S>;
 
-export const stateProvider = (view: View) => (state: State) =>
+export const stateProvider = <S>(view: View<S>) => (state: S) =>
     (function provide(target): VNode<any> {
         if (typeof target === 'function') {
             return provide(target(state));
-        }
-
-        if (target && typeof target.name === 'function') {
-            return provide(target.name(state));
         }
 
         if (target && target.children) {

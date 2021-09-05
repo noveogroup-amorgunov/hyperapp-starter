@@ -3,7 +3,6 @@ import {initialState, State} from './state';
 import {View, Props} from './View';
 
 export const Counter = createModule<State, Omit<Props, 'state'>>({
-    name: 'counter',
     initialState,
     View,
 });

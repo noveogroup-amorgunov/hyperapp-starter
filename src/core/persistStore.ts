@@ -7,16 +7,16 @@ import type {Subscription} from 'hyperapp';
 
 const STORAGE_KEY = '__store';
 
-function persistFx<T>(_: unknown, state: T) {
+function persistFx<S>(_: unknown, state: S) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
     return () => true;
 }
 
-export function persist<T>(state: T): Subscription<T> {
+export function persist<S>(state: S): Subscription<S> {
     return [persistFx, state];
 }
 
-export function getInitialState<T>(initialState: T): T {
+export function getInitialState<S>(initialState: S): S {
     try {
         return (
             JSON.parse(localStorage.getItem(STORAGE_KEY) as string) ||

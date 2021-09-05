@@ -19,8 +19,8 @@ export const View = () => (state: AppState) => {
 };
 
 app<AppState>({
-    init: getInitialState({}) as AppState,
-    view: stateProvider(View),
+    init: getInitialState<AppState>({}),
+    view: stateProvider<AppState>(View),
     subscriptions: state => [persist(state)],
     node: document.querySelector('#app')!,
 });
